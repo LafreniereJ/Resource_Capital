@@ -5,7 +5,7 @@ Mining industry intelligence platform providing real-time market data, news, and
 
 **Tech Stack:**
 - **Frontend**: Next.js 16 + React 19 + TailwindCSS + Framer Motion
-- **Backend**: FastAPI + SQLite
+- **Backend**: Supabase (PostgreSQL) + FastAPI (optional)
 - **Data Pipeline**: Python (yfinance, RSS feeds, PDF extraction)
 
 ## Architecture
@@ -13,7 +13,7 @@ Mining industry intelligence platform providing real-time market data, news, and
 frontend/                    - Next.js dashboard (port 3000)
   src/app/                   - Pages (stocks, news, companies, map, compare, etc.)
   src/components/            - Shared components (Navbar, etc.)
-  src/lib/db.ts              - Direct SQLite access for SSR
+  src/lib/db.ts              - Supabase client for SSR
   src/app/api/               - Next.js API routes
 
 data-pipeline/               - Python backend
@@ -24,13 +24,15 @@ data-pipeline/               - Python backend
     news_client.py           - Mining news RSS aggregator
     financials.py            - Financial statements
   processing/                - PDF extraction, classifiers
-    db_manager.py            - SQLite schema & functions
+    db_manager.py            - Supabase/PostgreSQL functions
   fetch_stock_prices.py      - Cron job: stock prices (every 15 min)
   fetch_metal_prices.py      - Cron job: metal prices (every 15 min)
   fetch_news.py              - Cron job: news (every 15 min)
   run_scheduler.py           - Windows-compatible scheduler
 
-database/mining.db           - SQLite database
+database/
+  supabase_schema.sql        - PostgreSQL schema for Supabase
+  schema.sql                 - SQLite schema (legacy reference)
 ```
 
 ## Current Features (as of Jan 2026)
@@ -107,12 +109,12 @@ python run_scheduler.py --once
 
 ### Database
 ```bash
-# Initialize/migrate database
-cd data-pipeline
-python -c "from processing.db_manager import init_db; init_db()"
+# Database is hosted on Supabase (PostgreSQL)
+# Run database/supabase_schema.sql in Supabase SQL Editor to initialize
 
-# Database location
-database/mining.db
+# Seed companies from CSV
+cd data-pipeline
+python sync_companies.py
 ```
 
 ## Database Schema (Key Tables)
@@ -194,5 +196,6 @@ published_at, fetched_at
 ### Configuration
 - Frontend port: 3000
 - Backend API port: 8000
-- Database: `database/mining.db`
+- Database: Supabase (PostgreSQL)
+- Schema: `database/supabase_schema.sql`
 - Logs: `data-pipeline/logs/`
