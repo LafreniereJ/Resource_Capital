@@ -294,7 +294,7 @@
 
 ### Extraction Pipeline Completion
 - [x] Document GROQ API key requirement in ENV_VARIABLES.md → Already in `data-pipeline/.env` and root `.env`
-- [x] GROQ API key configured and working → `gsk_GdC...` key tested successfully with llama-3.3-70b-versatile
+- [x] GROQ API key configured and working → key tested successfully with llama-3.3-70b-versatile
 - [ ] Add fallback to generic extractor when GROQ unavailable
 - [ ] Test PDF extraction with sample mining reports
 - [ ] Add extraction success rate tracking

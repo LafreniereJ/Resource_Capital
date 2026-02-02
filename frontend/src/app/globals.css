@@ -1,0 +1,594 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* ========================================
+   RESOURCE CAPITAL DESIGN SYSTEM
+   Mineral-Themed Accents (No Gradients)
+   ======================================== */
+
+/* Base Palette - Fixed across all themes */
+:root {
+  /* Backgrounds (black/dark grays) */
+  --color-bg-base: #0a0a0f;
+  --color-bg-surface: #12121a;
+  --color-bg-elevated: #1a1a24;
+
+  /* Text (white/grays) */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0a0b0;
+  --color-text-muted: #6b6b7b;
+
+  /* Borders (subtle white) */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 255, 255, 0.15);
+
+  /* Glass effects (neutral) */
+  --glass-base: rgba(18, 18, 26, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glow-neutral: rgba(255, 255, 255, 0.05);
+
+  /* Semantic Colors (fixed) */
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
+
+  /* Default Accent (Midnight Blue - will be overridden by JS) */
+  --color-accent: #2563eb;
+  --color-accent-light: #3b82f6;
+  --color-accent-muted: rgba(37, 99, 235, 0.15);
+  --color-gradient-mid: #22d3ee;
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+body {
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+::selection {
+  background: var(--color-accent-muted);
+  color: white;
+}
+
+/* ========================================
+   GLASSMORPHISM UTILITIES
+   ======================================== */
+
+.glass-card {
+  background: var(--glass-base);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow:
+    0 0 40px var(--glow-neutral),
+    0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card-hover:hover {
+  border-color: var(--color-border-hover);
+}
+
+.glass-nav {
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* ========================================
+   TEXT UTILITIES
+   ======================================== */
+
+.gradient-text {
+  color: var(--color-text-primary);
+}
+
+.gradient-text-accent {
+  background: linear-gradient(90deg,
+      var(--color-accent) 0%,
+      var(--color-accent-light) 25%,
+      var(--color-gradient-mid) 50%,
+      var(--color-accent-light) 75%,
+      var(--color-accent) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes gradient-shimmer {
+  0% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: 0% center;
+  }
+}
+
+/* ========================================
+   BUTTON STYLES (Premium Gradient)
+   ======================================== */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px var(--color-accent-muted);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px var(--color-accent-muted);
+  filter: brightness(1.1);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-border-hover);
+}
+
+/* ========================================
+   ACCENT COLOR UTILITIES
+   ======================================== */
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.bg-accent-muted {
+  background-color: var(--color-accent-muted);
+}
+
+.border-accent {
+  border-color: var(--color-accent);
+}
+
+/* ========================================
+   MISC UTILITIES
+   ======================================== */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px var(--color-accent-muted);
+}
+
+.radial-glow {
+  background: radial-gradient(circle at center, var(--glow-neutral) 0%, transparent 70%);
+}
+
+/* ========================================
+   TERMINAL COMMAND CENTER STYLES
+   ======================================== */
+
+/* Data Display - Monospace for numbers/tickers */
+.font-data {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  font-feature-settings: "tnum" 1, "zero" 1;
+  letter-spacing: -0.02em;
+}
+
+/* Up/Down Price Indicators */
+.price-up {
+  color: var(--color-success);
+}
+
+.price-down {
+  color: var(--color-danger);
+}
+
+.price-neutral {
+  color: var(--color-text-muted);
+}
+
+/* Subtle background tints for price changes */
+.bg-price-up {
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.bg-price-down {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Terminal Panel */
+.terminal-panel {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.terminal-panel-elevated {
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================
+   LIVE DATA ANIMATIONS
+   ======================================== */
+
+/* Pulse animation for live data indicator */
+@keyframes pulse-live {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+.pulse-live {
+  animation: pulse-live 2s ease-in-out infinite;
+}
+
+/* Flash animation for price updates */
+@keyframes flash-update {
+  0% {
+    background-color: rgba(34, 211, 238, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.flash-update {
+  animation: flash-update 1s ease-out;
+}
+
+/* Flash green for price increase */
+@keyframes flash-up {
+  0% {
+    background-color: rgba(16, 185, 129, 0.4);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.flash-up {
+  animation: flash-up 0.8s ease-out;
+}
+
+/* Flash red for price decrease */
+@keyframes flash-down {
+  0% {
+    background-color: rgba(239, 68, 68, 0.4);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.flash-down {
+  animation: flash-down 0.8s ease-out;
+}
+
+/* ========================================
+   LOADING SKELETONS
+   ======================================== */
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+.skeleton-text {
+  height: 1em;
+  width: 100%;
+}
+
+.skeleton-text-sm {
+  height: 0.75em;
+  width: 60%;
+}
+
+.skeleton-circle {
+  border-radius: 50%;
+}
+
+/* ========================================
+   BENTO GRID UTILITIES
+   ======================================== */
+
+.bento-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Smooth card transitions */
+.bento-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ========================================
+   TICKER TAPE SPECIFIC
+   ======================================== */
+
+.ticker-tape-container {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-scroll {
+  animation: ticker-scroll 60s linear infinite;
+}
+
+.ticker-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* ========================================
+   COMMAND PALETTE
+   ======================================== */
+
+.command-palette-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.command-palette-modal {
+  background: rgba(18, 18, 26, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================
+   SIGNAL FEED STYLES
+   ======================================== */
+
+.signal-row {
+  transition: background-color 0.15s ease;
+}
+
+.signal-row:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Volume spike fire indicator */
+.volume-fire {
+  color: #f59e0b;
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+/* ========================================
+   RISK METER
+   ======================================== */
+
+.risk-segment {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.risk-segment-active {
+  transform: scaleY(1.1);
+}
+
+/* Risk level colors */
+.risk-low {
+  background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+}
+
+.risk-moderate {
+  background: linear-gradient(180deg, #22d3ee 0%, #0891b2 100%);
+}
+
+.risk-elevated {
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+}
+
+.risk-high {
+  background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+}
+
+/* ========================================
+   HOVER CARDS
+   ======================================== */
+
+.hover-card {
+  background: rgba(18, 18, 26, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================
+   CATALYST CALENDAR
+   ======================================== */
+
+.catalyst-item {
+  transition: background-color 0.15s ease;
+}
+
+.catalyst-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Category badges */
+.catalyst-drill {
+  background-color: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
+
+.catalyst-earnings {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.catalyst-filing {
+  background-color: rgba(34, 211, 238, 0.2);
+  color: #22d3ee;
+}
+
+.catalyst-production {
+  background-color: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
+}
+
+/* ========================================
+   MAP STYLES
+   ======================================== */
+
+.map-container {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Custom marker colors */
+.marker-gold {
+  background-color: #fbbf24;
+  border-color: #f59e0b;
+}
+
+.marker-silver {
+  background-color: #9ca3af;
+  border-color: #6b7280;
+}
+
+.marker-copper {
+  background-color: #f97316;
+  border-color: #ea580c;
+}
+
+.marker-uranium {
+  background-color: #22c55e;
+  border-color: #16a34a;
+}
+
+.marker-lithium {
+  background-color: #a855f7;
+  border-color: #9333ea;
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+   ======================================== */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+
+@media (max-width: 768px) {
+  .terminal-panel,
+  .terminal-panel-elevated {
+    border-radius: 8px;
+  }
+
+  .bento-card:hover {
+    transform: none;
+  }
+}

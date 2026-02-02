@@ -17,6 +17,7 @@ build/
 
 # Node.js
 node_modules/
+node_modules.bak/
 .next/
 .vercel/
 npm-debug.log

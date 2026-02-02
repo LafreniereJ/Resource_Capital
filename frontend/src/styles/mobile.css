@@ -1,0 +1,227 @@
+/* ========================================
+   MOBILE UTILITIES
+   Resource Capital - Mobile-First Styles
+   ======================================== */
+
+/* Hide scrollbar on mobile for horizontal scroll */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Touch-friendly tap targets (min 44px for accessibility) */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Safe area padding for notched devices */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+/* Mobile-optimized table that scrolls horizontally */
+.mobile-table-wrapper {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+}
+
+/* Prevent text selection on interactive elements on mobile */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Mobile card press effect */
+.press-effect {
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+.press-effect:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* Bottom navigation styles */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINT HELPERS
+   ======================================== */
+
+/* Show only on mobile (< 768px) */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Show only on desktop (>= 768px) */
+@media (max-width: 767px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   LOADING ANIMATIONS
+   ======================================== */
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* ========================================
+   MOBILE NAVIGATION IMPROVEMENTS
+   ======================================== */
+
+/* Full height mobile menu with safe areas */
+.mobile-menu-full {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(5, 5, 16, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding-top: calc(64px + env(safe-area-inset-top, 0));
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  overflow-y: auto;
+}
+
+/* Mobile menu item with proper touch target */
+.mobile-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  min-height: 56px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.mobile-nav-item:active {
+  transform: scale(0.98);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================
+   MOBILE TABLE ALTERNATIVES
+   ======================================== */
+
+/* Stack table data vertically on mobile */
+@media (max-width: 767px) {
+  .mobile-stack-table thead {
+    display: none;
+  }
+
+  .mobile-stack-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .mobile-stack-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border: none;
+  }
+
+  .mobile-stack-table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #6b6b7b;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* ========================================
+   MOBILE FORM INPUTS
+   ======================================== */
+
+/* Larger touch-friendly inputs */
+@media (max-width: 767px) {
+  .mobile-input {
+    font-size: 16px !important; /* Prevents iOS zoom */
+    padding: 14px 16px !important;
+    min-height: 50px;
+  }
+
+  .mobile-button {
+    min-height: 50px;
+    font-size: 16px;
+    padding: 14px 24px;
+  }
+}
+
+/* ========================================
+   PULL TO REFRESH INDICATOR
+   ======================================== */
+
+.pull-indicator {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  z-index: 60;
+  padding: 12px 20px;
+  background: rgba(10, 10, 15, 0.95);
+  border-radius: 0 0 12px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
+  transition: transform 0.2s ease;
+}
+
+.pull-indicator.visible {
+  transform: translateX(-50%) translateY(0);
+}
