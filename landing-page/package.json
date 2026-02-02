@@ -1,0 +1,19 @@
+{
+    "name": "resource-capital-landing",
+    "version": "1.0.0",
+    "description": "Resource Capital - Coming Soon Landing Page",
+    "scripts": {
+        "dev": "npx serve .",
+        "start": "npx serve ."
+    },
+    "keywords": [
+        "landing-page",
+        "resource-capital",
+        "mining"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "yahoo-finance2": "^3.11.2"
+    }
+}

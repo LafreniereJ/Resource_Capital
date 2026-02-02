@@ -1,0 +1,5 @@
+SAMPLE CONTENT FOR ABX FROM http://simulated-sedar.com/barrick/mda_q4.pdf
+
+Key Metrics:
+Gold Production: 100,000 oz
+AISC: $1,200/oz

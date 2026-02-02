@@ -1,0 +1,8 @@
+ticker,mine_name,report_date,category,deposit_zone,tonnes_mt,grade,grade_unit,contained_oz,contained_unit,cutoff_grade,cutoff_unit,price_assumption,technical_report_title,qualified_person,source_url
+AEM,Canadian Malartic,2024-12-31,Proven,Open Pit,,,g/t Au,,Moz,,,,"Year-End Mineral Reserve and Resource Statement",,https://www.agnicoeagle.com
+AEM,Canadian Malartic,2024-12-31,Probable,Open Pit,,,g/t Au,,Moz,,,,"Year-End Mineral Reserve and Resource Statement",,
+AEM,Canadian Malartic,2024-12-31,Measured,Underground,,,g/t Au,,Moz,,,,"Year-End Mineral Reserve and Resource Statement",,
+AEM,Canadian Malartic,2024-12-31,Indicated,Underground,,,g/t Au,,Moz,,,,"Year-End Mineral Reserve and Resource Statement",,
+AEM,Canadian Malartic,2024-12-31,Inferred,Underground,,,g/t Au,,Moz,,,,"Year-End Mineral Reserve and Resource Statement",,
+ABX,Nevada Gold Mines,2024-12-31,Proven,Carlin,,,g/t Au,,Moz,,,,,https://www.barrick.com
+ABX,Nevada Gold Mines,2024-12-31,Probable,Carlin,,,g/t Au,,Moz,,,,,

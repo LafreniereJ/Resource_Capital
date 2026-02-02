@@ -1,0 +1,78 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Node.js
+node_modules/
+.next/
+.vercel/
+npm-debug.log
+yarn-error.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+nul
+
+# Logs
+logs/
+*.log
+
+# Temp files
+temp/
+tmp/
+*.tmp
+
+# Database backups
+*.db.bak
+
+# Database (large files)
+database/*.db
+data-pipeline/database/*.db
+*.db
+
+# Claude/Session files
+.claude_session_id
+.ralph_session
+.ralph_session_history
+.response_analysis
+.call_count
+.circuit_breaker_*
+.exit_signals
+.last_reset
+progress.json
+status.json
+
+# Downloaded files
+downloads/
+
+# PDF documents (large files)
+*.pdf
+data-pipeline/documents/
+
+# Cache directories
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Ralph binary
+ralph

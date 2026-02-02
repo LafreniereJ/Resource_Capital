@@ -1,0 +1,5 @@
+SAMPLE CONTENT FOR VALE FROM http://simulated-sedar.com/vale/prod_report.pdf
+
+Key Metrics:
+Gold Production: 100,000 oz
+AISC: $1,200/oz

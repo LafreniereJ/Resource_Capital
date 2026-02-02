@@ -1,0 +1,28 @@
+# Database
+# Note: Using SQLite via built-in sqlite3 module
+
+# PDF Processing
+pdfminer.six
+
+# Web/HTTP
+requests
+feedparser
+beautifulsoup4
+
+# Configuration
+python-dotenv
+pydantic
+
+# Market Data
+yfinance
+
+# Fuzzy Matching (for generic extractor)
+rapidfuzz
+
+# API Server
+fastapi
+uvicorn[standard]
+
+# Data Processing
+pandas
+openpyxl
